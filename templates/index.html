@@ -1,0 +1,21 @@
+{% extends "Recipe.html" %}
+{% block content %}
+<div class="hero">
+    <img class="hero-img" src="{{ url_for('static', filename='images/Gemini_Generated_Image_nmacv2nmacv2nmac.png') }}" alt="Food">
+    <div class="hero-overlay">
+        <h1>Recipe Generator</h1>
+        <h1>Генератор на рецепти</h1>
+        <p>Save your own recipes, add the key details, and browse them later in one place. An artificial intelligence can also rework the recipe for you.</p>
+        <br>
+        <p>Зачувај си свој рецепти, додади детали за нив и гледај си ги сите рецепти на едно место. Можеш да ги обработиш и со помош на вештачка интелегенција.</p>
+        <a class="btn" href="{{ url_for('recipe') }}">Enter your recipe / Внеси рецепта</a>
+    </div>
+</div>
+<div class="photo-strip">
+    <img src="{{ url_for('static', filename='images/Fish-Tacos-1337495.jpg') }}" alt="Fish Tacos / Такос од риба">
+    <img src="{{ url_for('static', filename='images/how-to-cook-steak-in-the-oven-index-66a3eda7b9f52.avif') }}" alt="Steak / Стек">
+    <img src="{{ url_for('static', filename='images/milk-bread.webp') }}" alt="Milk Bread / Леб">
+    <img src="{{ url_for('static', filename='images/Pancake-Recipe-1.jpg') }}" alt="Pancakes / Палачинки">
+    <img src="{{ url_for('static', filename='images/img_6934_48664.jpg') }}" alt="Recipe / Рецепта">
+</div>
+{% endblock %}

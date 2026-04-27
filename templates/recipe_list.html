@@ -1,0 +1,45 @@
+{% extends "Recipe.html" %}
+{% block content %}
+<h1>Recipes</h1>
+<form class="row" method="get">
+    <input type="text" name="q" placeholder="Search recipe" value="{{ q }}">
+    <select name="category">
+        <option value="">All categories / Сите категории</option>
+        {% for c in categories %}
+        <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn" type="submit">Filter / Филтрирај</button>
+</form>
+{% set food_images = [
+    'Fish-Tacos-1337495.jpg',
+    'how-to-cook-steak-in-the-oven-index-66a3eda7b9f52.avif',
+    'img_6934_48664.jpg',
+    'milk-bread.webp',
+    'Pancake-Recipe-1.jpg'
+] %}
+{% if recipes %}
+<ul class="list">
+    {% for r in recipes %}
+    {% set hours = r.time // 60 %}
+    {% set minutes = r.time % 60 %}
+    <li class="list-item">
+        <img class="list-thumb" src="{{ url_for('static', filename='images/' + food_images[loop.index0 % food_images|length]) }}" alt="{{ r.name }}">
+        <div class="list-content">
+            <a href="{{ url_for('recipe_detail', recipe_id=r.id) }}">{{ r.name }}</a>
+            <div class="muted">{{ r.created_at.strftime("%Y-%m-%d %H:%M") }}</div>
+            <div>{{ r.category }}</div>
+            <div>
+                {% if hours %}{{ hours }} hr{% endif %}
+                {% if minutes %}{% if hours %} {% endif %}{{ minutes }} min{% endif %}
+                {% if not hours and not minutes %}0 min{% endif %}
+            </div>
+            <div>{{ r.ingredients }}</div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No recipes found. / Нема таква рецепта</p>
+{% endif %}
+{% endblock %}

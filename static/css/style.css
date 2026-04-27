@@ -1,0 +1,342 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+a {
+    color: #90caf9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation */
+.nav {
+    background-color: #1e1e1e;
+    padding: 12px 24px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.nav a {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: #90caf9;
+    text-decoration: none;
+}
+
+/* Main container */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Headings */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+    color: #ffffff;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    padding: 8px 18px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #3a3a3a;
+    text-decoration: none;
+}
+
+.btn.danger {
+    background-color: #3b1a1a;
+    border-color: #8b0000;
+    color: #ff6b6b;
+}
+
+.btn.danger:hover {
+    background-color: #4e2020;
+}
+
+/* Row layout */
+.row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+/* Card */
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+/* Pre-formatted text */
+.pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    color: #e0e0e0;
+}
+
+/* Flash messages */
+.flash-wrap {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+.flash.error {
+    background-color: #3b1a1a;
+    border-color: #8b0000;
+    color: #ff6b6b;
+}
+
+.flash.success {
+    background-color: #1a3b1a;
+    border-color: #2e7d32;
+    color: #81c784;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.form label {
+    font-weight: bold;
+    color: #bdbdbd;
+}
+
+.form input,
+.form select,
+.form textarea {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: #90caf9;
+}
+
+/* Recipe list */
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.list-item {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 14px 16px;
+}
+
+.list-item a {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Muted text */
+.muted {
+    color: #757575;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Search row inputs */
+.row input[type="text"],
+.row select {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+.row input[type="text"]:focus,
+.row select:focus {
+    outline: none;
+    border-color: #90caf9;
+}
+
+/* ── Hero (index page) ── */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    gap: 10px;
+}
+
+.hero-overlay h1 {
+    margin-bottom: 0;
+}
+
+.hero-overlay p {
+    margin-bottom: 0;
+    color: #ccc;
+}
+
+/* ── Photo strip (index page) ── */
+.photo-strip {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+
+.photo-strip img {
+    flex: 1;
+    min-width: 0;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* ── Page banner (recipe detail) ── */
+.page-banner {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.page-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Form banner (recipe form) ── */
+.form-banner {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.form-banner-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* ── List thumbnails (recipe list) ── */
+.list-item {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.list-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.list-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}

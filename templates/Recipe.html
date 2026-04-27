@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+<nav class="nav">
+<a href="{{ url_for('index') }}">Home / Почетна страна</a>
+<a href="{{ url_for('recipe') }}">New recipe / Нова рецепта</a>
+<a href="{{ url_for('recipe_list') }}">All recipes / Сите рецепти</a>
+</nav>
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-wrap">
+        {% for category, msg in messages %}
+        <div class="flash {{category}}">{{msg}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>

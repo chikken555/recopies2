@@ -1,0 +1,29 @@
+{% extends "Recipe.html" %}
+{% block content %}
+<div class="form-banner">
+    <img src="{{ url_for('static', filename='images/milk-bread.webp') }}" alt="Cooking / Готвење">
+    <div class="form-banner-text">{% if recipe %}Edit Recipe{% else %}New Recipe{% endif %}</div>
+</div>
+<form class="form" method="post">
+    <label>Name * / Име *</label>
+    <input type="text" name="name" required value="{{ recipe.name if recipe else '' }}">
+    <label>Category * / Категорија *</label>
+    <select name="category" required>
+        <option value="" disabled {% if not recipe %}selected{% endif %}>Select</option>
+        {% for c in categories %}
+        <option value="{{ c }}" {% if recipe and recipe.category == c %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+    </select>
+    <label>Ingredients * / Состојќи *</label>
+    <input type="text" name="ingredients" required value="{{ recipe.ingredients if recipe else '' }}">
+    <label>Steps * / Чекори *</label>
+    <input type="text" name="steps" required value="{{ recipe.steps if recipe else '' }}">
+    <label>Notes / Додади нешто за памтење</label>
+    <input type="text" name="notes" value="{{ recipe.notes if recipe and recipe.notes else '' }}">
+    <label>Cooking time (minutes) * / Време за готвење (минути) *</label>
+    <input type="number" name="time" min="1" step="1" required value="{{ recipe.time if recipe and recipe.time else '' }}">
+    <label>Things used * / Работи употребени *</label>
+    <input type="text" name="things_used" required value="{{ recipe.things_used if recipe else '' }}">
+    <button class="btn" type="submit">Save / Зачувај</button>
+</form>
+{% endblock %}

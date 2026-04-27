@@ -1,0 +1,40 @@
+{% extends "Recipe.html" %}
+{% block content %}
+<div class="page-banner">
+    <img src="{{ url_for('static', filename='images/how-to-cook-steak-in-the-oven-index-66a3eda7b9f52.avif') }}" alt="Recipe / Рецепта">
+</div>
+<h1>{{ recipe.name }}</h1>
+<p><strong>Category: / Категорија:</strong> {{ recipe.category }}</p>
+<p><strong>Ingredients: / Состојќи:</strong> {{ recipe.ingredients }}</p>
+<p><strong>Steps: / Чекори:</strong> {{ recipe.steps }}</p>
+{% set hours = recipe.time // 60 %}
+{% set minutes = recipe.time % 60 %}
+<p><strong>Cooking time: / Време на правењеЧ</strong>
+    {% if hours %}{{ hours }} hr{% endif %}
+    {% if minutes %}{% if hours %} {% endif %}{{ minutes }} min{% endif %}
+    {% if not hours and not minutes %}0 min{% endif %}
+</p>
+<p><strong>Things used: / Работи употребени:</strong> {{ recipe.things_used }}</p>
+{% if recipe.notes %}
+<h2>Notes: / Додади нешто за поцетување:</h2>
+<div class="card">
+    <pre class="pre">{{ recipe.notes }}</pre>
+</div>
+{% endif %}
+<div class="row">
+    <a class="btn" href="{{ url_for('recipe_edit', recipe_id=recipe.id) }}">Edit / Промени нешто</a>
+    <form method="post" action="{{ url_for('recipe_delete', recipe_id=recipe.id) }}" onsubmit="return confirm('Are you sure? / Дали сте сигурни?');">
+        <button class="btn danger" type="submit">Delete / Избриши</button>
+    </form>
+</div>
+<h2>AI</h2>
+<div class="row">
+    <form method="post" action="{{url_for('ai_rewrite', recipe_id=recipe.id)}}">
+        <button class="btn" type="submit">Rewrite description / Препиши го описот</button>
+    </form>
+</div>
+<h3>AI description / AI објаснување</h3>
+<div class="row">
+    <pre class="pre">{{recipe.ai_description or "—"}}</pre>
+</div>
+{% endblock %}
